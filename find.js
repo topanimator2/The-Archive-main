@@ -43,7 +43,6 @@ if(sprite.search(/main.png/gm) != -1) {
 });
 }
 
-
 async function test() {
   const requestURL = "https://topanimator2.github.io/The-Archive-main/links.json";
   const request = new Request(requestURL);
@@ -51,14 +50,13 @@ async function test() {
   const response = await fetch(request);
   const locations = await response.json();
 
-  // Sort character links alphabetically by name
-  locations.characters.sort((a, b) => {
-      return a.name.localeCompare(b.name);
-  });
+  // Sort the characters array alphabetically
+  locations.characters.sort();
 
+  // Iterate over the sorted character links and call characterCreate for each
   locations.characters.forEach(link => {
       characterCreate(link);
   });
 }
 
-  
+
