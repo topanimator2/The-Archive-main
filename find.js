@@ -45,15 +45,20 @@ if(sprite.search(/main.png/gm) != -1) {
 
 
 async function test() {
-    const requestURL =
-    "https://topanimator2.github.io/The-Archive-main/links.json";
-    console.log(requestURL)
-    const request = new Request(requestURL);
-  
-    const response = await fetch(request);
-    const locations = await response.json();
-    locations.characters.forEach(link => {
-      characterCreate(link)
-    });
-  }
+  const requestURL = "https://topanimator2.github.io/The-Archive-main/links.json";
+  const request = new Request(requestURL);
+
+  const response = await fetch(request);
+  const locations = await response.json();
+
+  // Sort character links alphabetically by name
+  locations.characters.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+  });
+
+  locations.characters.forEach(link => {
+      characterCreate(link);
+  });
+}
+
   
