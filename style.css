@@ -8,12 +8,21 @@ h4 {
   padding: 0%;
 }
 
-body #show {
+body #charactershow {
   display: flex;
   background-color: black;
+  border-radius: 10px;
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-bottom: 1%;
 }
 
-#show .character {
+.showslot {
+  background-color: gray;
+  border-radius: 15px;
+}
+
+.character {
   flex-direction: column;
   max-width: 200px;
   max-height: 250px;
@@ -23,7 +32,7 @@ body #show {
   border-radius: 5px;
 }
 
-#show .character:hover {
+.character:hover {
   max-width: 200px;
   max-height: 150px;
   display: flex;
@@ -32,7 +41,7 @@ body #show {
   background-color: gray;
 }
 
-#show .character img {
+.character img {
   height: 75px;
   width: fit-content;
   padding: 4px;

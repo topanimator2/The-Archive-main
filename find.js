@@ -3,7 +3,7 @@
 
 test()
 async function characterCreate(location) {
-    const show = document.querySelector("#show")
+    const show = document.querySelector("#charactershow")
 
     let requestURL =
     location;
