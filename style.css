@@ -20,8 +20,7 @@ h4 {
 body .showslot {
   background-color: gray;
   border-radius: 15px;
-  border: 10px;
-  border-color: gray;
+  min-height: 300px;
 }
 
 .character {
@@ -41,6 +40,7 @@ body .showslot {
   flex-grow: 2;
   flex: auto;
   background-color: gray;
+  border-color: white;
 }
 
 .character img {
