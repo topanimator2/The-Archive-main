@@ -49,7 +49,7 @@ async function Search(location, neededId) {
 
 function SetShowcase(information) {
     // Get the showcase container element
-    let showcase = document.getElementById('showcase');
+    let showcase = document.getElementById('#showcase');
     
     // Create HTML elements to display the information
     let title = document.createElement('h2');
