@@ -1,46 +1,45 @@
-
-
-
-test()
 async function characterCreate(location) {
-    const show = document.querySelector("#charactershow")
+  const show = document.querySelector("#charactershow");
 
-    let requestURL =
-    location;
+  let requestURL = location;
   const request = new Request(requestURL);
 
   const response = await fetch(request);
   const details = await response.json();
 
-  console.log(details)
+  // Creating the character element
+  let Base = document.createElement('div');
+  Base.setAttribute('id', 'char' + details.id);
+  Base.classList.add('character');
+  show.appendChild(Base);
 
+  // Creating the character name element
+  let Name = document.createElement('div');
+  Name.textContent = details.name + '(' + details.pronouns + ')';
+  Base.appendChild(Name);
 
-//Creating the show thing
-let Base = document.createElement('dif')
-Base.setAttribute('id','char' + details.id)
-Base.classList.add('character')
-show.appendChild(Base)
+  // Creating the character age element
+  let Age = document.createElement('div');
+  Age.textContent = 'Age: ' + details.age;
+  Base.appendChild(Age);
 
-let Name = document.createElement('dif')
-Name.textContent = details.name + '(' + details.pronouns + ')'
-Base.appendChild(Name)
+  // Creating the character sprites
+  details.sprites.forEach(sprite => {
+      if (sprite.search(/main.png/gm) != -1) {
+          let Image = document.createElement('img');
+          Image.setAttribute('alt', "Image couldn't be found");
+          Image.setAttribute('src', sprite);
+          Base.appendChild(Image);
+      }
+  });
 
-Base.appendChild(document.createElement('br'))
-
-let Age = document.createElement('dif')
-Age.textContent = 'Age: ' + details.age
-Base.appendChild(Age)
-
-//sprites
-details.sprites.forEach(sprite => {
-if(sprite.search(/main.png/gm) != -1) {
-    let Image = document.createElement('img')
-    Image.setAttribute('alt', "Image couldn't be found")
-    Image.setAttribute('src', sprite)
-    Base.appendChild(Image)
-}
-
-});
+  // Add click event listener to the character element
+  Base.addEventListener('click', () => {
+      // Extract character ID from the element's ID
+      let charId = details.id;
+      // Navigate to object_view.html with character ID appended to the URL
+      window.location.href = `object_view.html#${charId}`;
+  });
 }
 
 async function test() {
@@ -59,4 +58,4 @@ async function test() {
   });
 }
 
-
+test();
