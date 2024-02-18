@@ -48,6 +48,7 @@ async function Search(location, neededId) {
 };
 
 function SetShowcase(information) {
+    console.log(information)
     // Get the showcase container element
     let showcase = document.getElementById('#showcase');
     
