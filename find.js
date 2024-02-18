@@ -36,7 +36,7 @@ async function characterCreate(location) {
   // Add click event listener to the character element
   Base.addEventListener('click', () => {
       // Extract character ID from the element's ID
-      let charId = details.id;
+      let charId = 'char'+details.id;
       // Navigate to object_view.html with character ID appended to the URL
       window.location.href = `object_view.html#${charId}`;
   });
