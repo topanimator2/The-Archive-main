@@ -62,7 +62,7 @@ function SetShowcase(information) {
     showcase.appendChild(age);
     
     // Create a div to contain the sprites
-    let spriteContainer = document.createElement('div');
+    let spriteContainer = document.createElement('section');
     spriteContainer.classList.add('sprite-container');
     spriteContainer.classList.add('sprites')
     spriteContainer.backgroundImage = `url('${information.sprites[0]}')`;
