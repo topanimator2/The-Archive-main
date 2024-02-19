@@ -44,7 +44,7 @@ async function Search(location, neededId) {
     let currentId = details.id
     console.log(neededId)
     console.log(currentId.toString())
-    if (currentId.toString == neededId) {
+    if (currentId.toString() == neededId) {
         SetShowcase(details)
     }
 };
