@@ -65,11 +65,7 @@ function SetShowcase(information) {
     let spriteContainer = document.createElement('div');
     spriteContainer.classList.add('sprite-container');
     spriteContainer.classList.add('sprites')
-    // Create a div for the background based on the main image
-    let backgroundDiv = document.createElement('div');
-    backgroundDiv.classList.add('background');
-    backgroundDiv.style.backgroundImage = `url('${information.sprites[0]}')`;
-    spriteContainer.appendChild(backgroundDiv);
+    spriteContainer.backgroundImage = `url('${information.sprites[0]}')`;
     
     // Create a div for each sprite
     information.sprites.forEach(sprite => {
