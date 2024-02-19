@@ -116,6 +116,7 @@ align-self: center;
 min-width: 100%;
 max-width: 100%;
 max-height: 300px;
+justify-content: center;
 }
 #showcase .sprite-container img{
   align-self: center;
