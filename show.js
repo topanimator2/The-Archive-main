@@ -58,16 +58,28 @@ function SetShowcase(information) {
     
     let age = document.createElement('p');
     age.textContent = 'Age: ' + information.age;
+    age.classList.add('subtitle')
     showcase.appendChild(age);
     
-    let sprites = document.createElement('div');
-    sprites.textContent = 'Sprites:';
+    // Create a div to contain the sprites
+    let spriteContainer = document.createElement('div');
+    spriteContainer.classList.add('sprite-container');
+    
+    // Create a div for the background based on the main image
+    let backgroundDiv = document.createElement('div');
+    backgroundDiv.classList.add('background');
+    backgroundDiv.style.backgroundImage = `url('${information.sprites[0]}')`;
+    spriteContainer.appendChild(backgroundDiv);
+    
+    // Create a div for each sprite
     information.sprites.forEach(sprite => {
         let img = document.createElement('img');
         img.src = sprite;
-        sprites.appendChild(img);
+        spriteContainer.appendChild(img);
     });
-    showcase.appendChild(sprites);
+    
+    // Append the sprite container to the showcase
+    showcase.appendChild(spriteContainer);
     
     let appearance = document.createElement('p');
     appearance.textContent = 'Appearance:';
@@ -90,6 +102,7 @@ function SetShowcase(information) {
     abilities.textContent = 'Abilities: ' + information.abilities;
     showcase.appendChild(abilities);
 }
+
 
 
 

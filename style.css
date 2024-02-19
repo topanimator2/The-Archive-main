@@ -103,3 +103,9 @@ html #create-document .hidden {
 #showcase h2{
 text-align: center;
 }
+#showcase .subtitle{
+  text-align: center;
+}
+#showcase div img{
+align-self: center;
+}
