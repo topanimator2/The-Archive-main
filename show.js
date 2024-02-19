@@ -34,7 +34,6 @@ async function GetAllLinks() {
 }
 
 async function Search(location, neededId) {
-    const show = document.querySelector("#charactershow");
 
     let requestURL = location;
     const request = new Request(requestURL);
@@ -42,6 +41,8 @@ async function Search(location, neededId) {
     const response = await fetch(request);
     const details = await response.json();
     //FloodGate, an perhaps laggy approach
+    console.log(details.id.toString)
+    console.log(neededId)
     if (details.id.toString == neededId) {
         SetShowcase(details)
     }
@@ -50,7 +51,7 @@ async function Search(location, neededId) {
 function SetShowcase(information) {
     console.log(information)
     // Get the showcase container element
-    let showcase = document.querySelector('#showcase');
+    const showcase = document.querySelector("#showcase");
     
     // Create HTML elements to display the information
     let title = document.createElement('h2');
