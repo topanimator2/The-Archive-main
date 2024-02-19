@@ -64,7 +64,7 @@ function SetShowcase(information) {
     // Create a div to contain the sprites
     let spriteContainer = document.createElement('div');
     spriteContainer.classList.add('sprite-container');
-    
+    spriteContainer.classList.add('sprites')
     // Create a div for the background based on the main image
     let backgroundDiv = document.createElement('div');
     backgroundDiv.classList.add('background');
