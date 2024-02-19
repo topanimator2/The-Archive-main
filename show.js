@@ -50,7 +50,6 @@ async function Search(location, neededId) {
 };
 
 function SetShowcase(information) {
-    console.log(information)
     // Get the showcase container element
     const showcase = document.querySelector("#showcase");
     
@@ -75,9 +74,9 @@ function SetShowcase(information) {
     let appearance = document.createElement('p');
     appearance.textContent = 'Appearance:';
     for (let range in information.appearance) {
-        let span = document.createElement('span');
-        span.textContent = range + ': ' + information.appearance[range];
-        appearance.appendChild(span);
+        let div = document.createElement('div');
+        div.textContent = range + ': ' + information.appearance[range];
+        appearance.appendChild(div);
     }
     showcase.appendChild(appearance);
     
