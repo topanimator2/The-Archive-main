@@ -41,9 +41,9 @@ async function Search(location, neededId) {
     const response = await fetch(request);
     const details = await response.json();
     //FloodGate, an perhaps laggy approach
-    console.log(details.id)
+    let currentId = details.id
     console.log(neededId)
-    if (details.id.toString == neededId) {
+    if (currentId.toString == neededId) {
         SetShowcase(details)
     }
 };
