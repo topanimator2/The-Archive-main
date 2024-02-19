@@ -110,14 +110,14 @@ text-align: center;
 #showcase .subtitle{
 text-align: center;
 }
-#showcase .sprites{
+#showcase .sprite-container{
 display: contents;
 align-self: center;
 min-width: 100%;
 max-width: 100%;
 max-height: 300px;
 }
-#showcase .sprites img{
+#showcase .sprite-container img{
   align-self: center;
   max-height: 300px;
 }
