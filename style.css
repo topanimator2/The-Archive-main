@@ -100,11 +100,15 @@ html #create-document .hidden {
 }
 
 
+
+.light-background {
+ background-color: rgb(74, 74, 74);
+}
 #showcase h2{
 text-align: center;
 }
 #showcase .subtitle{
-  text-align: center;
+text-align: center;
 }
 #showcase .sprites{
 align-self: center;
