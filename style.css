@@ -111,7 +111,7 @@ text-align: center;
 text-align: center;
 }
 #showcase .sprite-container{
-display: contents;
+display: flex;
 align-self: center;
 min-width: 100%;
 max-width: 100%;
