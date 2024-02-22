@@ -64,7 +64,7 @@ function SetShowcase(information) {
     // Create a div to contain the sprites
     let spriteContainer = document.createElement('section');
     spriteContainer.classList.add('sprite-container');
-    spriteContainer.backgroundImage = `url('${information.sprites[0]}')`;
+    spriteContainer.style.backgroundImage = `url('${information.sprites[0]}')`; // Set background image
     
     // Create a div for each sprite
     information.sprites.forEach(sprite => {
@@ -97,6 +97,7 @@ function SetShowcase(information) {
     abilities.textContent = 'Abilities: ' + information.abilities;
     showcase.appendChild(abilities);
 }
+
 
 
 
