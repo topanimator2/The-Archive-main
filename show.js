@@ -64,7 +64,7 @@ function SetShowcase(information) {
     // Create a div to contain the sprites
     let spriteContainer = document.createElement('section');
     spriteContainer.classList.add('sprite-container');
-    spriteContainer.style.backgroundImage = `url('${information.sprites[0]}'), url('sprites/misc/grid.ppg')`; // Set background images
+    spriteContainer.style.backgroundImage = `url('${information.sprites[0]}'), url('sprites/misc/grid.png')`; // Set background images
     spriteContainer.style.backgroundSize = 'cover'; // Ensure background images cover the container
     
     // Create a div for each sprite
