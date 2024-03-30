@@ -68,22 +68,23 @@ function handleSearch() {
   const showSlot = document.querySelector(".showslot");
   const characters = document.querySelectorAll(".character");
 
+  // Add event listener to input field
   searchInput.addEventListener('input', () => {
       // Show the showSlot
       showSlot.classList.remove("hidden");
 
-      const searchValue = searchInput.value.toLowerCase();
+      const searchValue = searchInput.value.trim().toLowerCase();
 
       // Hide all characters initially
       characters.forEach(character => {
-          character.style.display = 'none';
+          character.classList.add("hidden");
       });
 
       // Show characters whose name matches the search value
       characters.forEach(character => {
           const name = character.querySelector('div').textContent.toLowerCase();
           if (name.includes(searchValue)) {
-              character.style.display = 'block';
+              character.classList.remove("hidden");
           }
       });
   });
@@ -91,3 +92,4 @@ function handleSearch() {
 
 // Call the handleSearch function
 handleSearch();
+
