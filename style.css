@@ -98,7 +98,7 @@ body .showslot {
 html #create-document .hidden {
   display: none;
 }
-.hidden {
+body #search .hidden {
   display: none;
 }
 
