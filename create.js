@@ -94,3 +94,60 @@ document.addEventListener("DOMContentLoaded", function () {
     outputText.textContent = jsonString;
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Load JSON links
+  const loadJSON = async (url) => {
+      const response = await fetch(url);
+      return await response.json();
+  };
+
+  // Function to search for characters
+  const searchCharacters = async (query) => {
+      const links = await loadJSON("links.json");
+      const characterLinks = links.characters;
+
+      // Filter character links based on the query
+      const filteredCharacterLinks = characterLinks.filter(link => {
+          return link.includes(query);
+      });
+
+      // Fetch and display character details for each filtered link
+      const showSlot = document.querySelector(".showslot");
+      showSlot.innerHTML = ""; // Clear previous results
+      filteredCharacterLinks.forEach(async (link) => {
+          const response = await fetch(link);
+          const character = await response.json();
+          displayCharacter(character);
+      });
+  };
+
+  // Function to display character details
+  const displayCharacter = (character) => {
+      const characterDiv = document.createElement("div");
+      characterDiv.classList.add("character");
+
+      const name = document.createElement("h3");
+      name.textContent = character.name;
+      characterDiv.appendChild(name);
+
+      const age = document.createElement("p");
+      age.textContent = "Age: " + character.age;
+      characterDiv.appendChild(age);
+
+      // Add more details as needed
+
+      // Append character div to show slot
+      const showSlot = document.querySelector(".showslot");
+      showSlot.appendChild(characterDiv);
+  };
+
+  // Event listener for search input
+  const searchInput = document.querySelector("#search input[type='text']");
+  searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      searchCharacters(query);
+  });
+
+});

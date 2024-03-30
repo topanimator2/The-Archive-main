@@ -98,7 +98,9 @@ body .showslot {
 html #create-document .hidden {
   display: none;
 }
-
+.hidden {
+  display: none;
+}
 
 
 .light-background {
@@ -121,4 +123,8 @@ justify-content: center;
 #showcase .sprite-container img{
   align-self: center;
   max-height: 300px;
+}
+
+.search {
+  align-content: center;
 }
