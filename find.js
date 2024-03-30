@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const searchInput = document.querySelector("#search input[type='text']");
   const showSlot = document.querySelector(".showslot");
   const filterCheckbox = document.querySelector("#search input[type='checkbox']");
+  let isTyping = false; // Flag to indicate if the user is typing
 
   async function characterCreate(location) {
       const request = new Request(location);
@@ -42,8 +43,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Perform search when the user types in the search input
   searchInput.addEventListener('input', async () => {
-      const searchText = searchInput.value.toLowerCase();
-      showSlot.innerHTML = ''; // Clear the previous search results
+      const searchText = searchInput.value.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+      if (searchText.length === 0) return; // Exit if the search input is empty
+      isTyping = true; // Set the flag to true
+
+      // Clear the previous search results
+      showSlot.innerHTML = '';
 
       const requestURL = "https://topanimator2.github.io/The-Archive-main/links.json";
       const request = new Request(requestURL);
@@ -52,29 +57,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       locations.characters.forEach(link => {
           const characterName = link.split('/').pop().split('.')[0]; // Extract character name from the link
-          if (characterName.toLowerCase().includes(searchText)) {
+          if (characterName.toLowerCase().startsWith(searchText)) {
               characterCreate(link);
           }
       });
   });
 
-  // Perform search when the user toggles the filter checkbox
-  filterCheckbox.addEventListener('change', async () => {
-      if (filterCheckbox.checked) {
-          const searchText = searchInput.value.toLowerCase();
-          showSlot.innerHTML = ''; // Clear the previous search results
-
-          const requestURL = "https://topanimator2.github.io/The-Archive-main/links.json";
-          const request = new Request(requestURL);
-          const response = await fetch(request);
-          const locations = await response.json();
-
-          locations.characters.forEach(link => {
-              const characterName = link.split('/').pop().split('.')[0]; // Extract character name from the link
-              if (characterName.toLowerCase().startsWith(searchText)) {
-                  characterCreate(link);
-              }
-          });
+  // Hide the show slot if the user clicks outside the search input
+  document.addEventListener('click', function(event) {
+      if (!event.target.closest("#search") && !isTyping) {
+          showSlot.classList.add('hidden');
       }
   });
 
