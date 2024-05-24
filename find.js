@@ -103,19 +103,30 @@ async function test() {
     const response = await fetch(request);
     const locations = await response.json();
 
-    // Sort the characters array alphabetically
-    locations.characters.sort();
-    locations.locations.sort();
+    // Check if characters and locations arrays exist
+    if (locations.characters && Array.isArray(locations.characters)) {
+        // Sort the characters array alphabetically
+        locations.characters.sort();
 
-    // Iterate over the sorted character links and call characterCreate for each
-    locations.characters.forEach(link => {
-        characterCreate(link);
-    });
+        // Iterate over the sorted character links and call characterCreate for each
+        locations.characters.forEach(link => {
+            characterCreate(link);
+        });
+    } else {
+        console.error("Characters data is missing or not an array");
+    }
 
-    // Iterate over the sorted location links and call locationCreate for each
-    locations.locations.forEach(link => {
-        locationCreate(link);
-    });
+    if (locations.locations && Array.isArray(locations.locations)) {
+        // Sort the locations array alphabetically
+        locations.locations.sort();
+
+        // Iterate over the sorted location links and call locationCreate for each
+        locations.locations.forEach(link => {
+            locationCreate(link);
+        });
+    } else {
+        console.error("Locations data is missing or not an array");
+    }
 }
 
 test();
@@ -126,6 +137,16 @@ function handleSearch() {
     const showSlot = document.querySelector(".showslot");
     const characters = document.querySelectorAll(".character");
     const locations = document.querySelectorAll(".location");
+
+    if (!searchInput) {
+        console.error("Search input element not found");
+        return;
+    }
+
+    if (!showSlot) {
+        console.error("Show slot element not found");
+        return;
+    }
 
     // Add event listener to input field
     searchInput.addEventListener('input', () => {
