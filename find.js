@@ -127,6 +127,9 @@ async function test() {
     } else {
         console.error("Locations data is missing or not an array");
     }
+
+    // Call the handleSearch function after the characters and locations have been created
+    handleSearch();
 }
 
 test();
@@ -134,7 +137,6 @@ test();
 // Function to handle search
 function handleSearch() {
     const searchInput = document.querySelector("#search input[type='text']");
-    const showSlot = document.querySelector(".showslot");
     const characters = document.querySelectorAll(".character");
     const locations = document.querySelectorAll(".location");
 
@@ -143,16 +145,8 @@ function handleSearch() {
         return;
     }
 
-    if (!showSlot) {
-        console.error("Show slot element not found");
-        return;
-    }
-
     // Add event listener to input field
     searchInput.addEventListener('input', () => {
-        // Show the showSlot
-        showSlot.classList.remove("hidden");
-
         const searchValue = searchInput.value.trim().toLowerCase();
 
         // Hide all characters and locations initially
@@ -180,6 +174,3 @@ function handleSearch() {
         });
     });
 }
-
-// Call the handleSearch function
-handleSearch();
