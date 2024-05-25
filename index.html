@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title style="color: palevioletred;">My archive of my world</title>
     <link href="style.css" rel="stylesheet" />
-    <script src="find.js"></script>
+    <script src="find.js" defer></script>
 </head>
 <body>
     <section id="search">
-        <input type="text">
+        <input type="text" placeholder="Search by name">
+        <input type="number" id="time-filter" placeholder="Enter time">
         <input type="checkbox" name="filter">
         <label for="filter">Filter</label>
         <section class="showslot hidden"></section>

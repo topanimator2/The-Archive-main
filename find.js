@@ -137,40 +137,59 @@ test();
 // Function to handle search
 function handleSearch() {
     const searchInput = document.querySelector("#search input[type='text']");
+    const timeInput = document.querySelector("#time-filter");
     const characters = document.querySelectorAll(".character");
     const locations = document.querySelectorAll(".location");
 
-    if (!searchInput) {
-        console.error("Search input element not found");
+    if (!searchInput || !timeInput) {
+        console.error("Search input or time input element not found");
         return;
     }
 
-    // Add event listener to input field
-    searchInput.addEventListener('input', () => {
+    const filterCharacters = () => {
         const searchValue = searchInput.value.trim().toLowerCase();
+        const filterTime = timeInput.value ? parseInt(timeInput.value, 10) : null;
 
-        // Hide all characters and locations initially
-        characters.forEach(character => {
-            character.classList.add("hidden");
-        });
-        locations.forEach(location => {
-            location.classList.add("hidden");
-        });
-
-        // Show characters whose name matches the search value
         characters.forEach(character => {
             const name = character.querySelector('div').textContent.toLowerCase();
-            if (name.includes(searchValue)) {
-                character.classList.remove("hidden");
-            }
-        });
+            const timeEnd = parseInt(character.getAttribute('data-timeend'), 10);
 
-        // Show locations whose name matches the search value
+            let showCharacter = name.includes(searchValue);
+
+            if (filterTime !== null) {
+                showCharacter = showCharacter && (!timeEnd || filterTime <= timeEnd);
+            }
+
+            character.classList.toggle("hidden", !showCharacter);
+        });
+    };
+
+    const filterLocations = () => {
+        const searchValue = searchInput.value.trim().toLowerCase();
+        const filterTime = timeInput.value ? parseInt(timeInput.value, 10) : null;
+
         locations.forEach(location => {
             const name = location.querySelector('div').textContent.toLowerCase();
-            if (name.includes(searchValue)) {
-                location.classList.remove("hidden");
+            const timeEnd = parseInt(location.getAttribute('data-timeend'), 10);
+
+            let showLocation = name.includes(searchValue);
+
+            if (filterTime !== null) {
+                showLocation = showLocation && (!timeEnd || filterTime <= timeEnd);
             }
+
+            location.classList.toggle("hidden", !showLocation);
         });
+    };
+
+    // Add event listeners to input fields
+    searchInput.addEventListener('input', () => {
+        filterCharacters();
+        filterLocations();
+    });
+
+    timeInput.addEventListener('input', () => {
+        filterCharacters();
+        filterLocations();
     });
 }
